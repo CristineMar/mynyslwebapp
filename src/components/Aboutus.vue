@@ -13,11 +13,7 @@
 
           <div class="title mb-3">Check out our newest features!</div>
 
-          <!--<v-btn
-            class="mx-0"
-            color="primary"
-            large
-          >
+          <!--<v-btn class="mx-0" color="primary" large >
             See more
           </v-btn>-->
           
