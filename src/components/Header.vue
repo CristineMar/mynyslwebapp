@@ -20,15 +20,15 @@
 
       <template v-slot:extension>
 
-        <v-tabs v-model="tab" color="teal white--text" grow >
+        <v-tabs color="teal white--text" grow >
           <v-tabs-slider color="yellow"></v-tabs-slider>
           <v-tab to="/"> Home </v-tab>
-            <!--<router-link to="/" >Home</router-link>-->
+            <!-- <router-link to="/" >Home</router-link> -->
           <v-tab to="/game"> Game Schedule </v-tab>
-            <!--<router-link to="/game">Game Schedule</router-link>-->
+            <!-- <router-link to="/game">Game Schedule</router-link> -->
           <v-tab to="/aboutus"> About Us </v-tab>
-            <!--<router-link to="/aboutus">About Us</router-link>-->
-        </v-tabs>
+            <!-- <router-link to="/aboutus">About Us</router-link> -->
+        </v-tabs> 
 
       </template>
 

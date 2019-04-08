@@ -1,10 +1,8 @@
 import Vue from 'vue'
 
-
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-
 
 import Vuetify from 'vuetify'
 import './plugins/vuetify'
@@ -12,7 +10,7 @@ import 'vuetify/dist/vuetify.min.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 
 import VueRouter from 'vue-router'
-
+import store from './data/store'
 
 import Router from './router'
 import App from './App.vue'
@@ -31,6 +29,7 @@ const router = new VueRouter({
 });
 
 new Vue({
-  render: h => h(App),
-  router: router
+  store: store,
+  router: router,
+  render: h => h(App)
 }).$mount('#app')

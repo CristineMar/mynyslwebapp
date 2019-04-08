@@ -1,44 +1,42 @@
 <template>
-  <footer>
-         <v-card-title class="teal lighten-1 white--text justify-center flex"  flat tile>
-            <v-btn v-for="icon in icons" :key="icon" class="mx-3 white--text" icon :href="icon.url">
-                <v-icon size="25px" lighten-1 white--text>{{ icon.name }}</v-icon>
-              </v-btn>
-          </v-card-title>
-
-    <v-footer  dark height="auto">
+   <v-footer dark height="auto">
       <v-card class="flex" flat tile>
-        <v-card-actions class="grey darken-3 justify-center"> <strong> {{copyright}} </strong>
+        <v-card-title class="teal lighten-1 white--text justify-center flex"  flat tile>
+            <v-btn v-for="icon in icons" :key="icon.url" class="mx-3 white--text" dark icon :href="icon.url" target="_blank">
+                 <v-icon>{{ icon.name }}</v-icon>
+              </v-btn>
+          </v-card-title> 
+
+        <v-card-actions class="grey darken-3 justify-center"> 
+          <strong> {{ copyright }} </strong>
         </v-card-actions>
       </v-card>
     </v-footer>
-  </footer>
 </template>
 
 
 <script>
 
 export default {
-  name: 'App',
+  name: 'Footer',
   data: () => ({
-        network: 'Get connected with us!',
         copyright:'Copyright 2019 - Cristine Marquez',
         icons: [
         {
             name:'fab fa-facebook',
-            url: 'https://www.facebook.com/cristine.santiago.28',
+            url: 'https://www.facebook.com/#',
         },
         {
             name:'fab fa-github',
-            url: 'https://github.com/cristinepaula',
+            url: 'https://github.com/#',
         },
         {
             name:'fab fa-linkedin',
-            url: 'https://www.linkedin.com/in/cristine-marquez/',
+            url: 'https://www.linkedin.com/in/#',
         },
         {
             name:'fab fa-instagram',
-            url: 'https://www.instagram.com/mealux_28/',
+            url: 'https://www.instagram.com/#',
             
         },
         {
