@@ -7,6 +7,10 @@
               </v-btn>
           </v-card-title> 
 
+          <v-btn absolute dark fab top right color="green" >
+              <v-icon>chat</v-icon>
+            </v-btn>
+
         <v-card-actions class="grey darken-3 justify-center"> 
           <strong> {{ copyright }} </strong>
         </v-card-actions>

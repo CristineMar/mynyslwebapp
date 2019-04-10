@@ -71,7 +71,7 @@ export default {
     }
   },
       
-/*So, what I have done is when the component is mounted, we call the store’s action.
+/*So, what I have done is when the component is created, we call the store’s action.
 In our case that action is loadPlayers.
 So, it will fetch the players and commit the mutation called SET_players.
 This mutation set our Vue.js application state’s players array to the fetched players.
