@@ -1,4 +1,6 @@
 <template>
+<v-app id="inspired">
+  <v-content>
   <v-layout row justify-center>
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
@@ -57,6 +59,8 @@
       </v-card>
     </v-dialog>
   </v-layout>
+  </v-content>
+</v-app>
 </template>
 
 

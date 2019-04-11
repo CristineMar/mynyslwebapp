@@ -31,7 +31,7 @@
                       </v-tooltip>
                     </template>
 
-                    <template v-slot:items="props">
+                     <template v-slot:items="props">  <!-- Props are the way components can accept data from components that include them (parent components). When a component expects one or more prop, it must define them in its props property. -->
                       <td class="text-xs-left">{{ props.item.day }}</td>
                       <td class="text-xs-left">{{ props.item.teams }}</td>
                       <td class="text-xs-left"><a :href="props.item.url" target="_blank">{{ props.item.location }}</a></td>
@@ -93,5 +93,6 @@ Finally, loop through all the players and display it as a table format.*/
 </script>
 
 <style scoped>
+
 
 </style>
