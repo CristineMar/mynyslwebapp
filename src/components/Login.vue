@@ -76,6 +76,9 @@
     </div>
   </div>
 </template>
+
+
+
 <script>
 export default {
   name: 'home',
@@ -97,7 +100,11 @@ export default {
   }
 }
 </script>
-<style>
+
+
+
+<style scoped>
+
 .login{
   max-width: 450px;
   margin-top: 200px;
@@ -105,4 +112,5 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
+
 </style>
