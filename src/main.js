@@ -30,6 +30,7 @@ Vue.config.productionTip = false
 Vue.use(VueChatScroll)
 
 
+
 const router = new VueRouter({
   routes: Router
 });

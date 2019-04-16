@@ -28,7 +28,6 @@
     import CreateMessage from '@/components/CreateMessage';
     import fb from '@/firebase/init';
     import moment from 'moment';
-
     export default {
         name: 'Chat',
         props: ['name'],
@@ -42,7 +41,6 @@
         },
         created() {
             let ref = fb.collection('messages').orderBy('timestamp');
-
             ref.onSnapshot(snapshot => {
                 snapshot.docChanges().forEach(change => {
                     if (change.type == 'added') {
@@ -62,7 +60,6 @@
 
 
 <style scoped>
-
 .chat {
     max-width: 400px;
     margin-top: 200px;
@@ -83,6 +80,5 @@
 }
 .chat input {
     width: 100%;
-
 }
 </style>
