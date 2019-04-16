@@ -1,11 +1,11 @@
 <template>
   <div>
-   <v-toolbar color="teal" dark fixed app>
+   <v-toolbar color="teal" dark fixed app flat>
      <img class="nysl" alt="NYSL logo" src="../assets/logo.png">
     </v-toolbar>
     <template>
 
-    <v-toolbar color="teal" dark fixed app>
+    <v-toolbar color="teal" dark fixed app flat>
       <img class="nysl" alt="NYSL logo" src="../assets/logo.png">
       
       <h4><strong>NORTH YOUTH SOCCER LEAGUE</strong></h4>
@@ -14,7 +14,6 @@
       <v-btn icon>
         <v-icon>more_vert</v-icon>
       </v-btn>-->
-     
 
       <template v-slot:extension>
       
@@ -40,6 +39,7 @@
 
 
 export default {
+  name: 'Header',
   data () {
     return {
         

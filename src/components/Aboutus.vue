@@ -1,7 +1,7 @@
 <template>
 <div class="container">
     <v-content>
-      <h2 class="section-header">ABOUT US</h2><br>
+      <!-- <h2 class="section-header">ABOUT US</h2><br> -->
         <h3>Mision</h3>
           <p>To support young athletes living in Chicago´s northside neighborhoods, who have an interest in
           learning and playing soccer, with opportunities to learn and practice skills related to the game of soccer, specifically those skills around team cooperation and sportsmanship.</p>
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'App',
+  name: 'AboutUs',
   data () {
       return {
           
@@ -32,5 +32,8 @@ export default {
 </script>
 
 <style scoped>
+.container h3 {
+  text-align: center;
+}
 
 </style>

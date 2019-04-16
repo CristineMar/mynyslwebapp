@@ -5,10 +5,13 @@
         <h2 class="card-title text-center">Login</h2>
         <form @submit.prevent="login" class="text-center">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Please enter your name ..." name="name" v-model="name">
+             <input type="text" class="form-control" placeholder="Please enter your name ..." name="name" v-model="name">
+            <input type="text" class="form-control" placeholder="Email" name="email" v-model="email">
+            <input type="password" class="form-control" placeholder="Password" name="password" v-model="password">
             <p v-if="errorText" class="text-danger">{{ errorText }}</p>
           </div>
-          <button class="btn btn-primary">Enter Chat</button>
+          <button class="btn btn-primary" @click="login">Enter Chat</button>
+          <p>You don't have an account ? You can <router-link to="/signup">create one</router-link></p>
         </form>
       </div>
     </div>
@@ -16,16 +19,18 @@
 </template>
 <script>
 export default {
-  name: 'home',
+  name: 'login',
   data () {
     return {
       name: "",
-      errorText: null
+      errorText: null,
+      email: '',
+      password: ''
     }
   },
   methods: {
     login() {
-      if (this.name) {
+      if (this.name, this.email, this.password) {
         this.$router.push({name: 'Chat', params: {name: this.name}})
       } else {
         this.errorText = "Please enter a name!"

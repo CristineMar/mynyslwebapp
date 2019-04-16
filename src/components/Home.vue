@@ -1,43 +1,30 @@
 <template>
 <div class="container">
   <v-app id="inspire">
-  <v-responsive>
-    <v-container fill-height >
-      <v-layout align-center>
-        <v-flex>
-          <h3 class="display-3">Welcome to the site</h3>
-
-          <span class="subheading">Lorem ipsum dolor sit amet, pri veniam forensibus id. Vis maluisset molestiae id, ad semper lobortis cum. At impetus detraxit incorrupte usu, repudiare assueverit ex eum, ne nam essent vocent admodum.</span>
-
-          <v-divider class="my-3"></v-divider>
-
-          <div class="title mb-3">Check out our newest features!</div>
-
-          <!--<v-btn
-            class="mx-0"
-            color="primary"
-            large
-          >
-            See more
-          </v-btn>-->
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </v-responsive>
+    <button @click="logout">Logout</button>
   </v-app>
 </div>
 </template>
 
 
 <script>
+
+import firebase from 'firebase';
+import Body from './components/Body.vue'
+
+
 export default {
-  name: 'App',
-  data () {
-      return {
-          
-      }
+  name: 'home',
+  components: {
+    Body
+  },
+  methods: {
+    logout: function() {
+      firebase.auth().signOut().then(() => {
+      this.$router.replace('login') 
+      })
     }
-      
+  }  
 }
 </script>
 
