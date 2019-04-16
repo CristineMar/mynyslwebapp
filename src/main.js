@@ -4,6 +4,11 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import VueChatScroll from 'vue-chat-scroll'
+
 import Vuetify from 'vuetify'
 import './plugins/vuetify'
 import 'vuetify/dist/vuetify.min.css'
@@ -22,6 +27,7 @@ Vue.use(Vuetify, {
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
+Vue.use(VueChatScroll)
 
 
 const router = new VueRouter({
