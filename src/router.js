@@ -34,17 +34,17 @@ export default [
         path: '/chat', 
         name: 'Chat', 
         component: Chat, 
-        // meta: {
-        //     requiresAuth: true
-        // },
-        // props: true, //this code is for users to not be able to enter chat by writing in the url /chat to obligate users to ener a name to eneter chat room.
-        // beforeEnter: (to, from, next) => {
-        //    if(to.params.name){
-        //          next()
-        //      } else {
-        //          next({ name: 'Login' })  //to riderect to login if you don't enter a name.
-        //     }
-        // }
+        meta: {
+            requiresAuth: true
+        },
+        props: true, //this code is for users to not be able to enter chat by writing in the url /chat to obligate users to ener a name to eneter chat room.
+        beforeEnter: (to, from, next) => {
+           if(to.params.name){
+                 next()
+             } else {
+                 next({ name: 'Login' })  //to riderect to login if you don't enter a name.
+            }
+        }
     }
 ]
 
