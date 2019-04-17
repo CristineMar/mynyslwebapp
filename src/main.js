@@ -20,6 +20,7 @@ import store from './data/store'
 import Router from './router'
 import App from './App.vue'
 
+import firebase from 'firebase'
 
 Vue.use(Vuetify, {
   iconfont: 'fa'
@@ -29,14 +30,29 @@ Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 Vue.use(VueChatScroll)
 
-
+let app
 
 const router = new VueRouter({
   routes: Router
 });
 
-new Vue({
-  store: store,
-  router: router,
-  render: h => h(App)
-}).$mount('#app')
+const initialize = () => {
+  if (!app) {
+      app = new Vue({
+        store: store,
+        router: router,
+        render: h => h(App)
+      }).$mount('#app')
+  }
+}
+
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    store.commit('setCurrentUser', user)
+  } else {
+    store.commit('setCurrentUser', null)
+  }
+
+  initialize()
+
+  } )
