@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-// import firestore from 'firebase/firestore'
+import store from '@/store'
 
 // Initialize Firebase
 var config = {
@@ -10,8 +10,43 @@ var config = {
     storageBucket: "myproject-2cef5.appspot.com",
     messagingSenderId: "1073575815773"
   };
-  const firebaseApp = firebase.initializeApp(config);
+  const database = firebase.initializeApp(config);
   // firebaseApp.firestore().settings({ timestampsInSnapshots: true }) //to get rid red error because of update on firebase will not affect the project.
 
+  database.signUp = async (email,password) => {
+    try {
+      await firebase.auth().createUserWithEmailAndPassword(email, password)
+  
+      store.commit('setCurrentUser', firebase.auth().currentUser)
+  
+      return true
+    } catch (error) {
+      return error
+    }
+  }
+  
+  database.signIn = async (email,password) => {
+    try {
+      await firebase.auth().signInUserWithEmailAndPassword(email, password)
+  
+      store.commit('setCurrentUser', firebase.auth().currentUser)
+  
+      return true
+    } catch (error) {
+      return error
+    }
+  }
 
-  export default firebaseApp.firestore();
+  database.signOut = async () => {
+    try {
+      await firebase.auth().signOut()
+  
+      store.commit('setCurrentUser', null)
+  
+      return true
+    } catch (error) {
+      return error
+    }
+  }
+
+  export default database

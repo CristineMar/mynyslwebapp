@@ -54,6 +54,11 @@
                     }
                 });
             });
+        },
+        computed: {
+            currentUser () {
+                return this.$store.state.currentUser
+            }
         }
     }
 </script>
@@ -62,7 +67,7 @@
 <style scoped>
 .chat {
     max-width: 400px;
-    margin-top: 200px;
+    margin-top: 90px;
 }
 .chat h2 {
     font-size: 2.6em;

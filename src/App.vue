@@ -10,6 +10,8 @@
 
 
 <script>
+
+
 import Header from './components/Header.vue';
 //import Home from './components/Home.vue';
 //import Body from './components/Body.vue';
@@ -33,10 +35,6 @@ export default {
     }
 }
 </script>
-
-
-
-
 
 
 
