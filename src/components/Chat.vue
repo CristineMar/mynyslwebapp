@@ -1,89 +1,99 @@
 <template>
-    <div class="chat container">
-        <h2 class="text-primary text-center">Real-Time Chat</h2>
-        <h5 class="text-secondary text-center">NYSL Chat</h5>
-        <div class="card">
-            <div class="card-body">
-                <p class="nomessages text-secondary" v-if="messages.length == 0">
-                    [No messages yet!]
-                </p>
-                <div class="messages" v-chat-scroll="{always: false, smooth: true}">
-                    <div v-for="message in messages" :key="message.id">
-                        <span class="text-info">[{{ message.name }}]: </span>
-                        <span>{{message.message}}</span>
-                        <span class="text-secondary time">{{message.timestamp}}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card-action">
-                <CreateMessage :name="name"/>
-            </div>
-        </div>
+  <div id="app">
+      <v-app>
+    <div v-if="!username">
+      You can't chat without a name. What's your name? <br />
+      <input type="text" placeholder="Name" v-on:keyup.enter="updateUsername">
     </div>
+    <div v-else>
+      <div>
+        From : {{username}}<br />
+        Message:<br />
+        <textarea name="" id="" cols="30" rows="10" placeholder="New Message" v-on:keyup.enter="sendMessage">
+
+        </textarea>
+      </div>
+      <hr>
+      <div class="messages">
+        <h3>Messages</h3>
+        <div class="message" v-for="message in messages" :key="message.id">
+          <strong>{{message.username}}</strong>
+          <p>{{message.text}}</p>
+        </div>
+      </div>
+
+    </div>
+      </v-app>
+  </div>
 </template>
 
-
-
 <script>
-    import CreateMessage from '@/components/CreateMessage';
-    import fb from '@/firebase/init';
-    import moment from 'moment';
-    export default {
-        name: 'Chat',
-        props: ['name'],
-        components: {
-            CreateMessage
-        },
-        data() {
-            return{
-                messages: []
-            }
-        },
-        created() {
-            let ref = fb.collection('messages').orderBy('timestamp');
-            ref.onSnapshot(snapshot => {
-                snapshot.docChanges().forEach(change => {
-                    if (change.type == 'added') {
-                        let doc = change.doc;
-                        this.messages.push({
-                            id: doc.id,
-                            name: doc.data().name,
-                            message: doc.data().message,
-                            timestamp: moment(doc.data().timestamp).format('LTS')
-                        });
-                    }
-                });
-            });
-        },
-        computed: {
-            currentUser () {
-                return this.$store.state.currentUser
-            }
-        }
+
+import fire from '@/fire';
+
+export default {
+  name: 'app',
+  data() {
+    return {
+      username: '',
+      messages: []
     }
+  },
+  methods: {
+    updateUsername(e) {
+      e.preventDefault();
+      if(e.target.value){
+        this.username = e.target.value;
+      }
+    },
+    sendMessage(e) {
+      e.preventDefault();
+      if(e.target.value){
+        
+        const message = {
+          username: this.username,
+          text: e.target.value
+        }
+        fire.database().ref('messages').push(message);
+        e.target.value = ''
+      }
+    }
+  },
+  mounted(){
+    let vm = this;
+    const itemsRef = fire.database().ref('messages');
+    itemsRef.on('value', snapshot => {
+      let data = snapshot.val();
+      let messages = [];
+      Object.keys(data).forEach(key => {
+        messages.push({
+          id: key,
+          username: data[key].username,
+          text: data[key].text
+        });
+      });
+      vm.messages = messages;
+    })
+  }
+}
 </script>
 
-
 <style scoped>
-.chat {
-    max-width: 400px;
-    margin-top: 90px;
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
-.chat h2 {
-    font-size: 2.6em;
-    margin-bottom: 40px;
+.messages {
+  text-align: left;
 }
-.chat span {
-    font-size: 1.4em;
-}
-.chat time {
-    display: block;
-    font-size: 1.2em;
-}
-.chat .msg{
-    margin-left: 1%;
-}
-.chat input {
-    width: 100%;
+.message {
+  border: #000 solid 2px;
+  padding: 5px;
+  margin: 5px;
+  width: 200px;
 }
 </style>
