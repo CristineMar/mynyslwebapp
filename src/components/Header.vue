@@ -25,17 +25,9 @@
             <!-- <router-link to="/game">Game Schedule</router-link> -->
           <v-tab to="/aboutus"> About Us </v-tab>
             <!-- <router-link to="/aboutus">About Us</router-link> -->
-          <!-- <v-tab to="/login"> Chat </v-tab> --> 
-
-        <template v-if="!currentUser">
-          <v-tab to="/signup">Sign up</v-tab>
-          <v-tab to="/login">Sign in</v-tab>
-        </template>
-        <template v-else>
-          <a @click="signOut">Sign Out</a>
-        </template>
+          <v-tab to="/chat"> Chat </v-tab> 
         </v-tabs>
-
+        
       </template>
     </v-toolbar>
     </template>
@@ -45,7 +37,7 @@
 
 <script>
 
-import database from '@/firebase/init';
+
 
 export default {
   name: 'Header',
@@ -54,18 +46,6 @@ export default {
         
       } 
       
-    },
-    computed: {
-      currentUser () {
-        return this.$store.state.currentUser
-      }
-    },
-    methods: {
-      async signOut () {
-        await database.signOut()
-
-        this.$router.push('/login')
-      }
     }
 }
 </script>
