@@ -20,7 +20,7 @@ import store from './data/store'
 import Router from './router'
 import App from './App.vue'
 
-Vue.config.productionTip = false
+
 
 Vue.use(Vuetify, {
   iconfont: 'fa'

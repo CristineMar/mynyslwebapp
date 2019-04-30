@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+//import firestore from 'firebase/firestore'
 
 // Initialize Firebase
 var config = {
@@ -9,7 +10,10 @@ var config = {
     storageBucket: "myproject-2cef5.appspot.com",
     messagingSenderId: "1073575815773"
   };
-  const database = firebase.initializeApp(config);
+  const firebaseApp = firebase.initializeApp(config);
   // firebaseApp.firestore().settings({ timestampsInSnapshots: true }) //to get rid red error because of update on firebase will not affect the project.
 
-  export default database
+
+  export default firebaseApp.firestore();
+
+  
