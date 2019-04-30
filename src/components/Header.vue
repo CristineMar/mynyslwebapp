@@ -1,11 +1,11 @@
 <template>
   <div>
-   <v-toolbar color="teal" dark fixed app flat>
+   <v-toolbar color="teal" dark fixed app>
      <img class="nysl" alt="NYSL logo" src="../assets/logo.png">
     </v-toolbar>
     <template>
 
-    <v-toolbar color="teal" dark fixed app flat>
+    <v-toolbar color="teal" dark fixed app>
       <img class="nysl" alt="NYSL logo" src="../assets/logo.png">
       
       <h4><strong>NORTH YOUTH SOCCER LEAGUE</strong></h4>
@@ -14,6 +14,7 @@
       <v-btn icon>
         <v-icon>more_vert</v-icon>
       </v-btn>-->
+     
 
       <template v-slot:extension>
       
@@ -25,9 +26,9 @@
             <!-- <router-link to="/game">Game Schedule</router-link> -->
           <v-tab to="/aboutus"> About Us </v-tab>
             <!-- <router-link to="/aboutus">About Us</router-link> -->
-          <v-tab to="/chat"> Chat </v-tab> 
-        </v-tabs>
-        
+          <v-tab to="/login"> Chat </v-tab>
+        </v-tabs> 
+
       </template>
     </v-toolbar>
     </template>
@@ -36,11 +37,7 @@
  
 
 <script>
-
-
-
 export default {
-  name: 'Header',
   data () {
     return {
         
@@ -53,11 +50,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style scoped>
-
 img {
   width: 50px;
 }
-
 h4 {
   text-align: center;
   margin-left: 10px;
